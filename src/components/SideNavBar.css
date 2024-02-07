@@ -1,27 +1,29 @@
-.sidenav {
-    margin-top: 3.3cm;
-    height: 100%;
-    width: 200px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #322d34;
-    overflow-x: hidden;
-    padding-top: 10px;
-    display: flex;
-    flex-direction: column; /* Stack items vertically */
-  }
-  
-  .sidenav a {
-    padding: 10px 15px;
-    text-decoration: none;
-    font-size: 18px;
-    color: #818181;
-    display: block;
-  }
-  
-  .sidenav a:hover {
-    color: #f1f1f1;
-  }
-  
+/* SideNavBar.css */
+
+.side-nav {
+  flex: 0 0 15%;
+  background-color: #176769;
+  padding: 20px;
+}
+
+.nav-link {
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: solid;
+  color: #d1dce1ad;
+  border: 1px solid transparent; /* Initial border style */
+  padding: 10px 20px; /* Adjust padding as needed */
+  transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  background-color: #a4bc2c; /* Change to your desired background color on hover */
+  border-color: #821010; /* Change to your desired border color on hover */
+}
+
+.active {
+  background-color: #ddd; /* Change to your desired background color for active link */
+  border-color: #666; /* Change to your desired border color for active link */
+  color: #333; /* Change to your desired text color for active link */
+}

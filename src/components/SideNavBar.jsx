@@ -1,36 +1,24 @@
+// SideNavBar.jsx
+
+import React from 'react';
 import './SideNavBar.css';
-import { Link, Route, Routes } from "react-router-dom";
-import Home from './Home.jsx';
-import Addition from './Addition.jsx';
-import Continuation from './Continuation.jsx';
-import Termination from './Termination.jsx';
+import { NavLink } from "react-router-dom";
 
 export default function SideNavBar() {
     return (
-        <div className="sidenav">
-            <Link to={"/"} className="nav-link">
+        <div className="side-nav">
+            <NavLink to="/" className="nav-link" activeClassName="active">
                 Home
-            </Link>
-
-            <Link to={"/Addition"} className="nav-link">
+            </NavLink>
+            <NavLink to="/Addition" className="nav-link" activeClassName="active">
                 Addition
-            </Link>
-
-            <Link to={"/Continuation"} className="nav-link">
+            </NavLink>
+            <NavLink to="/Continuation" className="nav-link" activeClassName="active">
                 Continuation
-            </Link>
-
-            <Link to={"/Termination"} className="nav-link">
+            </NavLink>
+            <NavLink to="/Termination" className="nav-link" activeClassName="active">
                 Termination
-            </Link>
-
-            <Routes>
-                <Route exact path="/" element={<Home/>} /> 
-                <Route path="/add-course" element={<Addition />} />
-                <Route path="/view-courses" element={<Continuation />} />
-                <Route path="/view-courses" element={<Termination />} />
-            </Routes>
-
+            </NavLink>
         </div>
     );
 }

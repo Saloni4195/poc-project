@@ -1,45 +1,22 @@
+/* Header.css */
+
 .header {
-  background-color: #d77a16;
-  color: #221fc5;
+  background-color: #484141;
+  color: #fff;
   padding: 20px;
   text-align: center;
 }
 
 .header-img {
-
+  width: fit-content; /* Adjust width as needed */
   object-fit: cover;
-  margin-left: 5cm;
+  margin-left: 0%;
 }
 
 .header-p {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 2rem;
   color: #bb2626;
-  margin-left: 5cm;
   font-family: "Roboto Condensed", sans-serif;
   text-align: center;
 }
-
-
-header {
-    text-align: center;
-    margin: 3rem 0;
-  }
-  
-  header img {
-    height: 5rem;
-    width: 10rem;
-    object-fit: cover;
-  }
-  
-  header h1 {
-    margin: 0;
-    font-family: "Roboto Condensed", sans-serif;
-    font-size: 5rem;
-    background: linear-gradient(40deg, #ea00ff, #ea00ff, #03d5ff, #03d5ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
-  }
-  
- 
