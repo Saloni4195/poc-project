@@ -8,12 +8,12 @@ import { useNavigate } from 'react-router-dom';
 export default function Addition() {
 
     const [formData, setFormData] = useState({
-        chasisNo: '',
-        engineNo: '',
-        hpaFrom: null,
-        hpaUpto: null,
-        docUrl: '',
-        regNo: ''
+        firstName: '',
+        lastName: '',
+        empCode: '',
+        dob: null,
+        doj: null,
+        email: ''
     });
 
     const [formErrors, setFormErrors] = useState({});
@@ -22,33 +22,49 @@ export default function Addition() {
 
     const navigate = useNavigate();
 
-
-
     // Fxn to handle form input change
     const handleChange = (e) => {
         const { name, value } = e.target;
-            setFormData({
-                ...formData,
-                [name]: value
-            });
-        
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+
     };
 
     // Fxn to validate form data
     const validateForm = () => {
         let errors = {};
 
-        if (!formData.chasisNo.trim()) {
-            errors.chasisNo = 'Chasis No is required';
-        } else if (!/^\d{4,17}$/.test(formData.chasisNo.trim())) {
-            errors.chasisNo = 'Chasis No must be between 4 to 17 digits and contain no spaces';
+        if (!formData.firstName.trim()) {
+            errors.firstName = 'First Name is required';
+        } else if (!/^[A-Za-z]+$/.test(formData.firstName.trim())) {
+            errors.firstName = 'First Name should contain only alphabets';
         }
 
+        if (!formData.empCode.trim()) {
+            errors.empCode = 'Employee Code is required';
+        } else if (formData.empCode.trim().length < 6) {
+            errors.empCode = 'Employee Code should be at least 6 digits';
+        }
 
-        if (!formData.regNo.trim()) {
-            errors.regNo = 'Registration No is required';
-        } else if (!/^\d{10,}$/.test(formData.regNo.trim())) {
-            errors.regNo = 'Registration No must be at least 10 digits and contain no spaces';
+        if (!formData.email.trim()) {
+            errors.email = 'Email is required';
+        } else if (!/\S+@\S+\.\S+/.test(formData.email.trim())) {
+            errors.email = 'Invalid email format';
+        }
+    
+        if (formData.doj === null) {
+            errors.doj = 'Date of Joining is required';
+        }
+    
+        if (formData.dob === null) {
+            errors.dob = 'Date of Birth is required';
+        } else {
+            const dobYear = new Date(formData.dob).getFullYear();
+            if (dobYear > 2002) {
+                errors.dob = 'DOB should not be later than 2002';
+            }
         }
 
         setFormErrors(errors);
@@ -59,14 +75,16 @@ export default function Addition() {
     // fxn to handle form reset
     function handleReset() {
         return (
+            setFormErrors({}),
             setFormData({
-                chasisNo: '',
-                engineNo: '',
-                hpaFrom: '',
-                hpaUpto: '',
-                docUrl: '',
-                regNo: ''
+                firstName: '',
+                lastName: '',
+                empCode: '',
+                dob: null,
+                doj: null,
+                email: ''
             })
+            
         )
     }
 
@@ -77,17 +95,17 @@ export default function Addition() {
 
         if (validateForm()) {
             // You can perform further actions if the form is valid, such as sending the form data to a server
-            console.log('Addition Form submitted:', formData);
+            console.log('Employee Details Added:', formData);
             // Reset form fields after submission
             setFormData({
-                chasisNo: '',
-                engineNo: '',
-                hpaFrom: '',
-                hpaUpto: '',
-                docUrl: '',
-                regNo: ''
+                firstName: '',
+                lastName: '',
+                empCode: '',
+                dob: null,
+                doj: null,
+                email: ''
             });
-            setModalMessage('Addition Form submitted successfully!');
+            setModalMessage('Employee Details Added successfully!');
             setShowModal(true);
             setTimeout(() => {
                 setShowModal(false);
@@ -115,49 +133,54 @@ export default function Addition() {
 
     return (
         <div className="addition-container">
-            <h1 className="addition-heading">Hypothetication Addition</h1>
+            <h1 className="addition-heading">Add Employee Details</h1>
             <form onSubmit={handleSubmit} className="addition-form">
                 <div className="form-group">
-                    <label htmlFor="chasisNo">Chasis No :</label>
-                    <input className={formErrors.chasisNo ? "error-input" : ""} type="text" id="chasisNo" placeholder="Enter Chasis Number" name="chasisNo" value={formData.chasisNo} onChange={handleChange} />
-                    {formErrors.chasisNo && <span className="error">{formErrors.chasisNo}</span>}
+                    <label htmlFor="firstName">First Name*</label>
+                    <input className={formErrors.firstName ? "error-input" : ""} type="text" id="firstName" placeholder="Enter First Name" name="firstName" value={formData.firstName} onChange={handleChange} />
+                    {formErrors.firstName && <span className="error">{formErrors.firstName}</span>}
                 </div>
                 <div className="form-group">
-                    <label htmlFor="engineNo">Engine No :</label>
-                    <input type="text" id="engineNo" name="engineNo" placeholder="Enter Engine Number" value={formData.engineNo} onChange={handleChange} />
+                    <label htmlFor="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Enter Last Name" value={formData.lastName} onChange={handleChange} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="hpaFrom">HPA From :</label>
+                    <label htmlFor="empCode">Employee Code*</label>
+                    <input className={formErrors.empCode ? "error-input" : ""} type="text" id="empCode" name="empCode" placeholder="Enter employee code" value={formData.empCode} onChange={handleChange} />
+                    {formErrors.empCode && <span className="error">{formErrors.empCode}</span>}
+                </div>
+                <div className="form-group">
+                    <label htmlFor="dob">Date of Birth</label>
                     <Calendar
-                        id="hpaFrom"
-                        name="hpaFrom"
+                        id="dob"
+                        name="dob"
+                        className={formErrors.dob ? "error-input" : ""}
                         placeholder="Date(YYYY-MM-DD)"
-                        value={formData.hpaFrom}
+                        value={formData.dob}
                         onChange={handleChange}
                         showIcon
                         dateFormat="yy-mm-dd"
                     />
+                     {formErrors.dob && <span className="error">{formErrors.dob}</span>}
                 </div>
                 <div className="form-group">
-                    <label htmlFor="hpaUpto">HPA Upto:</label>
+                    <label htmlFor="doj">Date of Joining*</label>
                     <Calendar
-                        id="hpaUpto"
-                        name="hpaUpto"
+                        id="doj"
+                        name="doj"
+                        className={formErrors.doj ? "error-input" : ""}
                         placeholder="Date(YYYY-MM-DD)"
-                        value={formData.hpaUpto}
+                        value={formData.doj}
                         onChange={handleChange}
                         showIcon
                         dateFormat="yy-mm-dd"
                     />
+                    {formErrors.doj && <span className="error">{formErrors.doj}</span>}
                 </div>
                 <div className="form-group">
-                    <label htmlFor="docUrl">Document Url :</label>
-                    <input type="text" id="docUrl" name="docUrl" placeholder="Enter Document Url" value={formData.docUrl} onChange={handleChange} />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="regNo">Registration No :</label>
-                    <input className={formErrors.regNo ? "error-input" : ""} type="text" id="regNo" name="regNo" placeholder="Enter Registration Number" value={formData.regNo} onChange={handleChange} />
-                    {formErrors.regNo && <span className="error">{formErrors.regNo}</span>}
+                    <label htmlFor="email">Email Id*</label>
+                    <input className={formErrors.email ? "error-input" : ""} type="text" id="email" name="email" placeholder="Enter email id" value={formData.email} onChange={handleChange} />
+                    {formErrors.email && <span className="error">{formErrors.email}</span>}
                 </div>
                 <div className="button-group">
                     <button type="submit" className="submit-btn">Submit</button>

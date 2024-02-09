@@ -10,14 +10,14 @@ export default function SideNavBar() {
             <NavLink to="/" className="nav-link" activeclassname="active">
                 Home
             </NavLink>
-            <NavLink to="/Addition" className="nav-link" activeclassname="active">
-                Addition
+            <NavLink to="/add-details" className="nav-link" activeclassname="active">
+                Add Details
             </NavLink>
-            <NavLink to="/Continuation" className="nav-link" activeclassname="active">
-                Continuation
+            <NavLink to="/edit-details" className="nav-link" activeclassname="active">
+                Update Details
             </NavLink>
-            <NavLink to="/Termination" className="nav-link" activeclassname="active">
-                Termination
+            <NavLink to="/add-query" className="nav-link" activeclassname="active">
+                Add Query
             </NavLink>
         </div>
     );

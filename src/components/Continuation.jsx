@@ -115,56 +115,36 @@ export default function Continuation() {
 
     return (
         <div className="continuation-container">
-            <h1 className="continuation-heading">Hypothetication Continuation</h1>
+            <h1 className="continuation-heading">Update Employee Details</h1>
             <form onSubmit={handleSubmit} className="continuation-form">
                 <div className="form-group">
-                    <label htmlFor="TxnId">Transaction ID :</label>
-                    <input type="text" id="TxnId" placeholder="Enter Transaction Id" name="TxnId" value={formData.TxnId} onChange={handleChange} />
+                    <label htmlFor="empCode">Employee Code*</label>
+                    <input type="text" id="empCode" placeholder="Enter Employee Code" name="empCode" value={formData.empCode} onChange={handleChange} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="chasisNo">Chasis No :</label>
-                    <input type="text"  className={formErrors.chasisNo ? "error-input" : ""} id="chasisNo" placeholder="Enter Chasis Number" name="chasisNo" value={formData.chasisNo} onChange={handleChange} />
-                    {formErrors.chasisNo && <span className="error">{formErrors.chasisNo}</span>}
+                    <label htmlFor="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Enter Last Name" value={formData.lastName} onChange={handleChange} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="fncrCode">FNCR Code:</label>
-                    <input type="text" id="fncrCode" name="fncrCode" placeholder="Enter FNCR Code" value={formData.engineNo} onChange={handleChange} />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="hpaFrom">HPA From :</label>
-                    <Calendar 
-                        id="hpaFrom"
-                        name="hpaFrom"
+                    <label htmlFor="dob">Date of Birth</label>
+                    <Calendar
+                        id="dob"
+                        name="dob"
+                        className={formErrors.dob ? "error-input" : ""}
                         placeholder="Date(YYYY-MM-DD)"
-                        value={formData.hpaFrom}
+                        value={formData.dob}
                         onChange={handleChange}
                         showIcon
                         dateFormat="yy-mm-dd"
                     />
+                    {formErrors.dob && <span className="error">{formErrors.dob}</span>}
                 </div>
                 <div className="form-group">
-                    <label htmlFor="hpaUpto">HPA Upto:</label>
-                    <Calendar 
-                        id="hpaUpto" 
-                        name="hpaUpto" 
-                        placeholder="Date(YYYY-MM-DD)"
-                        value={formData.hpaUpto} 
-                        onChange={handleChange} // Use handleDateChange for date change
-                        showIcon
-                        dateFormat="yy-mm-dd" 
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="docUrl">Document Url :</label>
-                    <input type="text" id="docUrl" name="docUrl" placeholder="Enter Document Url" value={formData.docUrl} onChange={handleChange} />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="regNo">Registration No :</label>
-                    <input type="text"  className={formErrors.regNo ? "error-input" : ""} id="regNo" name="regNo" placeholder="Enter Registration Number" value={formData.regNo} onChange={handleChange} />
-                    {formErrors.regNo && <span className="error">{formErrors.regNo}</span>}
+                    <label htmlFor="email">Email Id*</label>
+                    <input type="text" id="email" name="email" placeholder="Enter email Id" value={formData.email} onChange={handleChange} />
                 </div>
                 <div className="button-group">
-                    <button type="submit" className="submit-btn">Submit</button>
+                    <button type="submit" className="submit-btn">Update</button>
                     <button type="button" onClick={handleReset} className="reset-btn">Reset</button>
                 </div>
             </form>

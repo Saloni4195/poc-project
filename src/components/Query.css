@@ -1,0 +1,59 @@
+/* styles.css */
+
+/* Existing styles for card, form-container, input-label, textarea, submit-button */
+.card {
+    background-color: #cfd2f3;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-label {
+    font-weight: bold;
+}
+
+.textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.submit-button {
+    background-color: #22580d;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #7ac95f;
+}
+
+/* New styles for toast */
+.p-toast-message-container {
+    z-index: 10000; /* Ensure toast is on top of other content */
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+.p-toast-message {
+    margin-top: 20%;
+    background-color: rgba(50, 236, 65, 0.8); /* Background color for the toast */
+    color: #1f1d1d;
+    border-radius: 5px;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

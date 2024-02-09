@@ -1,7 +1,7 @@
 /* Header.css */
 
 .header {
-  background-color: #484141;
+  background-color: #2c2c3b;
   color: #fff;
   padding: 20px;
   text-align: center;
@@ -10,13 +10,19 @@
 .header-img {
   width: fit-content; /* Adjust width as needed */
   object-fit: cover;
-  margin-left: 0%;
+  margin-left: 18%;
 }
 
 .header-p {
-  margin: 0;
-  font-size: 2rem;
-  color: #bb2626;
+  margin: 10;
+  font-size: 1.5rem;
+  color: #320808;
   font-family: "Roboto Condensed", sans-serif;
   text-align: center;
+}
+
+.body-img {
+  width: 50%; /* Adjust width as needed */
+  object-fit: cover;
+  margin-left: 22%;
 }

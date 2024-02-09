@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './components/Home.jsx';
 import Addition from './components/Addition.jsx';
 import Continuation from './components/Continuation.jsx';
-import Termination from './components/Termination.jsx';
+import Query from './components/Query.jsx';
 
 function App() {
   return (
@@ -18,9 +18,9 @@ function App() {
           <div className="page-container">
             <Routes>
               <Route path="/" element={<Home />} /> 
-              <Route path="/Addition" element={<Addition />} />
-              <Route path="/Continuation" element={<Continuation />} />
-              <Route path="/Termination" element={<Termination />} />
+              <Route path="/add-details" element={<Addition />} />
+              <Route path="/edit-details" element={<Continuation />} />
+              <Route path="/add-query" element={<Query />} />
             </Routes>
           </div>
         </div>

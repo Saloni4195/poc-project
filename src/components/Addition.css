@@ -119,4 +119,20 @@
     border-radius: 5px;
 }
 
+.upload-photo-label {
+  display: block;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Hide the file input */
+.upload-photo-label input[type="file"] {
+  display: none;
+}
+
   
